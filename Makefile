@@ -1,9 +1,20 @@
-CXXFLAGS=-g
+CXX = g++
+CXXFLAGS = -g -Wall
 
+# Default target
+all: testrun
+
+# Linking step
 testrun: testrun.o hw2.o
-	g++ -o testrun testrun.o hw2.o -lpthread
+	$(CXX) $(CXXFLAGS) -o testrun testrun.o hw2.o -lpthread
 
-testrun.o: hw2.h testrun.cpp
+# Compilation steps
+testrun.o: testrun.cpp hw2.h
+	$(CXX) $(CXXFLAGS) -c testrun.cpp
 
+hw2.o: hw2.cpp hw2.h
+	$(CXX) $(CXXFLAGS) -c hw2.cpp
+
+# Clean up
 clean:
-	rm testrun.o hw2.o testrun
+	rm -f testrun.o hw2.o testrun

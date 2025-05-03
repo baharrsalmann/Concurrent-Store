@@ -63,6 +63,7 @@ void *customer(void *n) {
     buy(a, b, c);
     printl(mut, "bought %d,%d,%d\n", a, b, c);
   }
+  //printf("sim over, customer:?\n");
   return NULL;
 }
 

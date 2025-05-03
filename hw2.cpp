@@ -42,6 +42,9 @@ class StoreMonitor : public Monitor {
     void buyMonitor(int aA, int aB, int aC){
          __synchronized__;
 
+         if(aA>maxOrder || aB>maxOrder || aC>maxOrder){
+            return;
+         }
          while (aA > avail[AAA] || aB > avail[BBB] || aC > avail[CCC]) {
             customerCond.wait();
         }
